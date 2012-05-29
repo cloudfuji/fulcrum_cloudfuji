@@ -7,5 +7,10 @@ class AddCloudfujiAuthenticatableFieldsToUser < ActiveRecord::Migration
         puts "Already added Cloudfuji columns to user!"
       end
     end
+    begin
+      remove_column :users, :reset_password_sent_at
+    rescue
+      puts "reset_password_sent_at column doesn't exist on :users table."
+    end
   end
 end
