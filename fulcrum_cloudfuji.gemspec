@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split("\n")
   s.version = Fulcrum::Cloudfuji::VERSION
 
-  s.add_dependency 'cloudfuji',           '>= 0.0.42'
+  s.add_dependency 'cloudfuji',           '>= 0.0.44'
   s.add_dependency 'devise_cloudfuji_authenticatable'
 
 end
