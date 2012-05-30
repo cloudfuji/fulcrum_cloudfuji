@@ -55,6 +55,10 @@ module Fulcrum
         Project.class_eval do
           after_create :add_all_users!
 
+          validates_presence_of   :ido_id
+          validates_uniqueness_of :ido_id
+          before_validation Proc.new { |p| p.ido_id ||= UUID.new.generate  }
+
           def add_all_users!
             User.all.each do |user|
               unless self.users.include?(user)

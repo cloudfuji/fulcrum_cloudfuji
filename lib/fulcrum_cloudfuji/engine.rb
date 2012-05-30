@@ -1,6 +1,12 @@
 module Fulcrum
   module Cloudfuji
     class Engine < Rails::Engine
+      config.before_initialize do
+        # Register observers to fire Cloudfuji events
+        config.active_record.observers = [(config.active_record.observers || [])].flatten
+        config.active_record.observers << :cloudfuji_story_observer
+      end
+
       config.to_prepare do
         ::Fulcrum::Application.class_eval do
           # Add migrations from engine to main migrations

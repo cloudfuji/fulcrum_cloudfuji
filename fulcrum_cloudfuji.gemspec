@@ -14,5 +14,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'cloudfuji',           '>= 0.0.44'
   s.add_dependency 'devise_cloudfuji_authenticatable'
+  s.add_dependency 'uuid'
 
 end
