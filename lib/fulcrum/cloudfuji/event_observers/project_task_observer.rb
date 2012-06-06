@@ -17,6 +17,8 @@ module Fulcrum
           story.story_type      = data['task_type']
           story.state           = data['state']
           story.accepted_at     = data['accepted_at']
+          # :accepted_at must be populated if state is accepted.
+          story.accepted_at ||= Time.now.to_date if story.state == "accepted"
           story.requested_by    = User.find_by_ido_id(data['requested_by_id'])
           story.owned_by        = User.find_by_ido_id(data['owned_by_id'])
           story.project         = Project.find_by_ido_id(data['project_id'])
